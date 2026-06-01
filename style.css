@@ -169,6 +169,7 @@ a {
 
 @media (max-width: 768px) {
     .section { padding: var(--section-gap-mobile) 0; }
+    .container { padding: 0 1.25rem; }
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -582,6 +583,21 @@ a {
     .hero-pillars { align-items: center; }
 }
 
+@media (max-width: 768px) {
+    .hero-title { font-size: 1.8rem; line-height: 1.2; margin-bottom: 1rem; }
+    .hero-subtitle { font-size: 0.95rem; margin-bottom: 2rem; }
+    .ease-badge { font-size: 0.7rem; padding: 0.4rem 0.8rem; margin-bottom: 1rem; }
+    .hero-pillars { gap: 0.8rem; }
+    .hero-pillar-item { font-size: 0.85rem; text-align: left; align-items: flex-start; }
+    .hero-pillar-item i { margin-top: 2px; flex-shrink: 0; }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 1.55rem; word-break: break-word; }
+    .hero-subtitle { font-size: 0.85rem; }
+    .hero-pillar-item { font-size: 0.8rem; }
+}
+
 /* ══════════════════════════════════════════════════════════
    FORM (Glassmorphic — Scalable-inspired)
    ══════════════════════════════════════════════════════════ */
@@ -775,11 +791,13 @@ select.select-simple {
 }
 
 @media (max-width: 991px) {
-    .form-container {
+    .form-container-new {
         max-width: 480px;
         margin: 0 auto;
         width: 100%;
         padding: 2rem;
+        flex-direction: column;
+        gap: 2rem;
     }
 }
 
