@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ⚡ GOOGLE SHEETS INTEGRATION
     // After deploying the Apps Script, paste your Web App URL below:
-    const GOOGLE_SHEETS_URL = 'COLE_SUA_URL_AQUI';
+    const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw8xAmGNz5vy5vSliIwb95rPm85R29Ke7kiZh6u32F73lymaoL3dEGyv02fEgOv1601/exec';
 
     const formSteps = document.querySelectorAll('.form-step');
     const progressFill = document.getElementById('form-progress-fill');
