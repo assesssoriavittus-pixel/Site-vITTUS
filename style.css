@@ -732,6 +732,9 @@ select.form-input { appearance: none; cursor: none; }
     opacity: 1;
     mix-blend-mode: screen;
 }
+img[src*="logo-rocha"] {
+    filter: brightness(0) invert(1);
+}
 .marquee-item:hover .marquee-img {
     opacity: 1;
 }
