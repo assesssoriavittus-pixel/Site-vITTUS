@@ -119,94 +119,77 @@
                 
                 <!-- Hero Right: Qualification Form -->
                 <div class="hero-right">
-                    <div class="form-container">
-                        <div class="form-header">
-                            <h3 class="form-title">Sessão Estratégica</h3>
-                            <p class="form-desc">Preencha as informações abaixo para qualificarmos seu diagnóstico estratégico.</p>
-                            <div class="form-progress-bar">
-                                <div class="form-progress-fill" id="form-progress-fill"></div>
+                    <div class="form-container-new">
+                        <div class="form-left-col">
+                            <h3 class="form-main-title">Cadastre-se e receba o<br>contato do nosso time!</h3>
+                            
+                            <div class="form-steps-info">
+                                <div class="step-divider"><span>Passo 1</span></div>
+                                <div class="step-info-box">
+                                    <div class="step-icon">
+                                        <i data-lucide="user"></i>
+                                    </div>
+                                    <div class="step-text">
+                                        <h4>Complete o formulário</h4>
+                                        <p>Forneça suas informações de contato. Garantimos a segurança total de seus dados. Serão usados apenas para contato.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-divider"><span>Passo 2</span></div>
+                                <div class="step-info-box">
+                                    <div class="step-icon">
+                                        <i data-lucide="phone"></i>
+                                    </div>
+                                    <div class="step-text">
+                                        <h4>Receba uma ligação personalizada</h4>
+                                        <p>Em um prazo de até 8 horas, um dos nossos especialistas entrará em contato diretamente para agendar a reunião mais crucial com você.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
-                        <form id="qualification-form" novalidate>
-                            <!-- Step 1: Personal Info -->
-                            <div class="form-step active" data-step="1">
-                                <div class="form-group">
-                                    <label class="form-label">Nome Completo</label>
-                                    <input type="text" id="form-name" class="form-input" placeholder="Ex: Roberto Silveira" required>
+                        <div class="form-right-col">
+                            <form id="qualification-form" novalidate>
+                                <div class="form-group-simple">
+                                    <input type="text" id="form-name" class="form-input-simple" placeholder="Seu nome" required>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">E-mail Corporativo</label>
-                                    <input type="email" id="form-email" class="form-input" placeholder="Ex: roberto@grupo.com.br" required>
+                                <div class="form-group-simple">
+                                    <input type="email" id="form-email" class="form-input-simple" placeholder="Seu melhor e-mail" required>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">Telefone de Contato</label>
-                                    <input type="tel" id="form-phone" class="form-input" placeholder="Ex: (11) 99999-9999" required>
+                                <div class="form-group-simple phone-wrapper">
+                                    <span class="country-flag">🇧🇷</span>
+                                    <input type="tel" id="form-phone" class="form-input-simple with-flag" placeholder="Telefone" required>
                                 </div>
-                            </div>
-                            
-                            <!-- Step 2: Company Info -->
-                            <div class="form-step" data-step="2">
-                                <div class="form-group">
-                                    <label class="form-label">Razão Social / Nome da Empresa principal</label>
-                                    <input type="text" id="form-company" class="form-input" placeholder="Ex: Grupo Silveira" required>
+                                <div class="form-group-simple">
+                                    <input type="text" id="form-company" class="form-input-simple" placeholder="Nome da empresa" required>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">CNPJ Corporativo (Opcional)</label>
-                                    <input type="text" id="form-cnpj" class="form-input" placeholder="Ex: 00.000.000/0000-00">
+                                <div class="form-group-simple">
+                                    <label class="form-label-simple">Selecionar segmento</label>
+                                    <select id="form-segment" class="form-input-simple select-simple" required>
+                                        <option value="" disabled selected>Selecionar</option>
+                                        <option value="Serviços / Consultoria">Serviços / Consultoria</option>
+                                        <option value="Rede de Franquias">Rede de Franquias</option>
+                                        <option value="Holding / Grupo de Negócios">Holding / Grupo de Negócios</option>
+                                        <option value="Tecnologia / Corporativo">Tecnologia / Corporativo</option>
+                                        <option value="Indústria / Varejo">Indústria / Varejo</option>
+                                        <option value="Agronegócio">Agronegócio</option>
+                                        <option value="Pizzarias">Pizzarias</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">Segmento de Atuação</label>
-                                    <div class="form-select-wrapper">
-                                        <select id="form-segment" class="form-input" required>
-                                            <option value="" disabled selected>Selecionar segmento</option>
-                                            <option value="Serviços / Consultoria">Serviços / Consultoria</option>
-                                            <option value="Rede de Franquias">Rede de Franquias</option>
-                                            <option value="Holding / Grupo de Negócios">Holding / Grupo de Negócios</option>
-                                            <option value="Tecnologia / Corporativo">Tecnologia / Corporativo</option>
-                                            <option value="Indústria / Varejo">Indústria / Varejo</option>
-                                            <option value="Agronegócio">Agronegócio</option>
-                                            <option value="Outros">Outros</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group-simple">
+                                    <label class="form-label-simple">Selecionar faturamento</label>
+                                    <select id="form-revenue" class="form-input-simple select-simple" required>
+                                        <option value="" disabled selected>Selecionar</option>
+                                        <option value="Abaixo de 50k">Abaixo de R$ 50 mil</option>
+                                        <option value="50k a 100k">R$ 50 mil a R$ 100 mil</option>
+                                        <option value="100k a 300k">R$ 100 mil a R$ 300 mil</option>
+                                        <option value="Acima de 300k">Acima de R$ 300 mil</option>
+                                    </select>
                                 </div>
-                            </div>
-                            
-                            <!-- Step 3: Qualification & Budgets -->
-                            <div class="form-step" data-step="3">
-                                <div class="form-group">
-                                    <label class="form-label">Faturamento Mensal do Grupo</label>
-                                    <div class="form-select-wrapper">
-                                        <select id="form-revenue" class="form-input" required>
-                                            <option value="" disabled selected>Selecionar faturamento</option>
-                                            <option value="Até R$ 50 mil">Até R$ 50 mil</option>
-                                            <option value="R$ 50 mil a R$ 100 mil">R$ 50 mil a R$ 100 mil</option>
-                                            <option value="R$ 100 mil a R$ 250 mil">R$ 100 mil a R$ 250 mil</option>
-                                            <option value="R$ 250 mil a R$ 500 mil">R$ 250 mil a R$ 500 mil</option>
-                                            <option value="R$ 500 mil a R$ 1 Milhão">R$ 500 mil a R$ 1 Milhão</option>
-                                            <option value="Mais de R$ 1 Milhão">Mais de R$ 1 Milhão</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Orçamento mensal disponível para investir na estrutura?</label>
-                                    <div class="form-select-wrapper">
-                                        <select id="form-invest" class="form-input" required>
-                                            <option value="" disabled selected>Selecionar resposta</option>
-                                            <option value="Sim, possuo orçamento disponível.">Sim, possuo orçamento disponível.</option>
-                                            <option value="Não, apenas pesquisando informações.">Não, apenas pesquisando informações.</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Form Buttons -->
-                            <div class="form-actions">
-                                <button type="button" class="btn form-btn-prev" id="form-btn-prev" style="display: none;">Voltar</button>
-                                <button type="button" class="btn btn-primary form-btn-next" id="form-btn-next">Avançar <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i></button>
-                                <button type="submit" class="btn btn-primary form-btn-submit" id="form-btn-submit" style="display: none;">Agendar Diagnóstico</button>
-                            </div>
-                        </form>
+                                <button type="submit" id="form-btn-submit" class="btn btn-primary form-submit-simple">Receber mais informações</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 

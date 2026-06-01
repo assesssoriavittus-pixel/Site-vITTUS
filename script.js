@@ -221,62 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------
-    // 6. Multi-Step Qualification Form
+    // 6. Qualification Form (Simple)
     // ----------------------------------------------------------
 
     // ⚡ GOOGLE SHEETS INTEGRATION
-    // After deploying the Apps Script, paste your Web App URL below:
     const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw8xAmGNz5vy5vSliIwb95rPm85R29Ke7kiZh6u32F73lymaoL3dEGyv02fEgOv1601/exec';
 
-    const formSteps = document.querySelectorAll('.form-step');
-    const progressFill = document.getElementById('form-progress-fill');
-    const btnPrev = document.getElementById('form-btn-prev');
-    const btnNext = document.getElementById('form-btn-next');
+    const form = document.getElementById('qualification-form');
     const btnSubmit = document.getElementById('form-btn-submit');
 
-    if (formSteps.length > 0 && progressFill) {
-        let currentStep = 0;
-        const totalSteps = formSteps.length;
-
-        const updateFormUI = () => {
-            // Show/hide steps
-            formSteps.forEach((step, index) => {
-                step.classList.toggle('active', index === currentStep);
-            });
-
-            // Update progress bar
-            const progressPercent = ((currentStep + 1) / totalSteps) * 100;
-            progressFill.style.width = `${progressPercent}%`;
-
-            // Show/hide navigation buttons
-            if (btnPrev) btnPrev.style.display = currentStep === 0 ? 'none' : 'inline-flex';
-            if (btnNext) btnNext.style.display = currentStep < totalSteps - 1 ? 'inline-flex' : 'none';
-            if (btnSubmit) btnSubmit.style.display = currentStep === totalSteps - 1 ? 'inline-flex' : 'none';
-        };
-
-        // --- Input Masks ---
-
-        // CNPJ Mask: XX.XXX.XXX/XXXX-XX
-        const cnpjInput = document.getElementById('form-cnpj');
-        if (cnpjInput) {
-            cnpjInput.addEventListener('input', (e) => {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 14) value = value.slice(0, 14);
-
-                if (value.length > 12) {
-                    value = value.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{1,2})/, '$1.$2.$3/$4-$5');
-                } else if (value.length > 8) {
-                    value = value.replace(/^(\d{2})(\d{3})(\d{3})(\d{1,4})/, '$1.$2.$3/$4');
-                } else if (value.length > 5) {
-                    value = value.replace(/^(\d{2})(\d{3})(\d{1,3})/, '$1.$2.$3');
-                } else if (value.length > 2) {
-                    value = value.replace(/^(\d{2})(\d{1,3})/, '$1.$2');
-                }
-
-                e.target.value = value;
-            });
-        }
-
+    if (form && btnSubmit) {
         // Phone Mask: (XX) XXXXX-XXXX
         const phoneInput = document.getElementById('form-phone');
         if (phoneInput) {
@@ -296,19 +250,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --- Step Validation ---
         const validateEmail = (email) => {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         };
 
-        const validateStep = (stepIndex) => {
-            const step = formSteps[stepIndex];
-            const inputs = step.querySelectorAll('input[required], select[required], textarea[required]');
+        const validateForm = () => {
+            const inputs = form.querySelectorAll('input[required], select[required]');
             let isValid = true;
 
             inputs.forEach((input) => {
-                // Remove previous error styling
                 input.classList.remove('input-error');
 
                 if (!input.value.trim()) {
@@ -326,110 +277,72 @@ document.addEventListener('DOMContentLoaded', () => {
             return isValid;
         };
 
-        // --- Send data to Google Sheets ---
         const sendToGoogleSheets = async (formData) => {
-            if (!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL === 'COLE_SUA_URL_AQUI') {
-                console.warn('⚠️ Google Sheets URL não configurada. Configure a variável GOOGLE_SHEETS_URL no script.js');
-                return false;
-            }
-
+            if (!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL === 'COLE_SUA_URL_AQUI') return false;
             try {
                 await fetch(GOOGLE_SHEETS_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData),
                 });
-                console.log('✅ Dados enviados para o Google Sheets');
                 return true;
             } catch (error) {
-                console.error('❌ Erro ao enviar para o Google Sheets:', error);
                 return false;
             }
         };
 
-        // --- Navigation ---
-        if (btnNext) {
-            btnNext.addEventListener('click', () => {
-                if (validateStep(currentStep)) {
-                    currentStep++;
-                    updateFormUI();
-                }
-            });
-        }
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-        if (btnPrev) {
-            btnPrev.addEventListener('click', () => {
-                if (currentStep > 0) {
-                    currentStep--;
-                    updateFormUI();
-                }
-            });
-        }
+            if (!validateForm()) return;
 
-        // --- Submit to Google Sheets + WhatsApp ---
-        if (btnSubmit) {
-            btnSubmit.addEventListener('click', async (e) => {
-                e.preventDefault();
+            const originalText = btnSubmit.innerHTML;
+            btnSubmit.innerHTML = 'Processando...';
+            btnSubmit.disabled = true;
 
-                if (!validateStep(currentStep)) return;
+            const name = document.getElementById('form-name')?.value || '';
+            const email = document.getElementById('form-email')?.value || '';
+            const phone = document.getElementById('form-phone')?.value || '';
+            const company = document.getElementById('form-company')?.value || '';
+            const segment = document.getElementById('form-segment')?.value || '';
+            const revenue = document.getElementById('form-revenue')?.value || '';
 
-                const originalText = btnSubmit.innerHTML;
-                btnSubmit.innerHTML = 'Processando...';
-                btnSubmit.disabled = true;
+            // Data object for Google Sheets
+            const formData = {
+                timestamp: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
+                nome: name,
+                email: email,
+                telefone: phone,
+                empresa: company,
+                cnpj: '',
+                segmento: segment,
+                faturamento: revenue,
+                investimento: '',
+            };
 
-                const name = document.getElementById('form-name')?.value || '';
-                const email = document.getElementById('form-email')?.value || '';
-                const phone = document.getElementById('form-phone')?.value || '';
-                const company = document.getElementById('form-company')?.value || '';
-                const cnpj = document.getElementById('form-cnpj')?.value || '';
-                const segment = document.getElementById('form-segment')?.value || '';
-                const revenue = document.getElementById('form-revenue')?.value || '';
-                const invest = document.getElementById('form-invest')?.value || '';
+            // 1) Send to Google Sheets (non-blocking)
+            sendToGoogleSheets(formData);
 
-                // Data object for Google Sheets
-                const formData = {
-                    timestamp: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
-                    nome: name,
-                    email: email,
-                    telefone: phone,
-                    empresa: company,
-                    cnpj: cnpj,
-                    segmento: segment,
-                    faturamento: revenue,
-                    investimento: invest,
-                };
+            // 2) Build WhatsApp message
+            const message = `🏛️ *NOVA QUALIFICAÇÃO — ASSESSORIA VITTUS*\n\n` +
+                `👤 *Nome:* ${name}\n` +
+                `📧 *E-mail:* ${email}\n` +
+                `📱 *Telefone:* ${phone}\n` +
+                `🏢 *Empresa:* ${company}\n` +
+                `📊 *Segmento:* ${segment}\n` +
+                `💰 *Faturamento:* ${revenue}`;
 
-                // 1) Send to Google Sheets (non-blocking)
-                sendToGoogleSheets(formData);
+            const whatsappNumber = '5562994525599';
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-                // 2) Build WhatsApp message
-                const message = `🏛️ *NOVA QUALIFICAÇÃO — ASSESSORIA VITTUS*\n\n` +
-                    `👤 *Nome:* ${name}\n` +
-                    `📧 *E-mail:* ${email}\n` +
-                    `📱 *Telefone:* ${phone}\n` +
-                    `🏢 *Empresa:* ${company}\n` +
-                    `📋 *CNPJ:* ${cnpj}\n` +
-                    `📊 *Segmento:* ${segment}\n` +
-                    `💰 *Faturamento:* ${revenue}\n` +
-                    `📈 *Investimento:* ${invest}`;
-
-                const whatsappNumber = '5562994525599';
-                const encodedMessage = encodeURIComponent(message);
-                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-                setTimeout(() => {
-                    window.open(whatsappURL, '_blank');
-                    btnSubmit.innerHTML = originalText;
-                    btnSubmit.disabled = false;
-                }, 1000);
-            });
-        }
-
-        // Initialize form UI
-        updateFormUI();
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                btnSubmit.innerHTML = originalText;
+                btnSubmit.disabled = false;
+            }, 1000);
+        });
     }
 
     // ----------------------------------------------------------
