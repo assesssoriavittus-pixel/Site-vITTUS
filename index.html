@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>ASSESSORIA VITTUS | Assessoria Estratégica e Gestão de Negócios</title>
+    <meta name="description" content="Assessoria estratégica e gestão corporativa centralizada para empresários com múltiplos negócios que buscam consolidação, governança e crescimento organizado.">
+    <meta name="keywords" content="assessoria estratégica, gestão empresarial, governança corporativa, crescimento de negócios, holdings de negócios, posicionamento premium">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://assessoriavittus.com.br">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ASSESSORIA VITTUS | Gestão Estratégica e Governança">
+    <meta property="og:description" content="Centralizamos a estrutura das suas marcas para você focar no crescimento dos seus negócios.">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Lucide Icons Library (via CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-circle" id="cursor-circle"></div>
+
+    <!-- FLOATING LIGHT LEAKS (VERTICAL BACKGROUND LINES) -->
+    <div class="light-wrapper">
+        <div class="lights-holder">
+            <div class="light left"></div>
+            <div class="light middle"></div>
+            <div class="light right"></div>
+        </div>
+    </div>
+
+    <!-- ==================== HEADER / NAVIGATION ==================== -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-nav">
+                <a href="#" class="logo" id="header-logo">
+                    <img src="Black White Geometric Digital Startup Logo.jpg" alt="ASSESSORIA VITTUS" class="logo-img">
+                </a>
+                
+                <nav class="nav-menu" id="nav-menu">
+                    <a href="#inicio" class="nav-link active">Início</a>
+                    <a href="#sobre" class="nav-link">Sobre a Vittus</a>
+                    <a href="#servicos" class="nav-link">Serviços</a>
+                    <a href="#metodo" class="nav-link">Método</a>
+                    <a href="#cases" class="nav-link">Clientes</a>
+                </nav>
+                
+                <div>
+                    <a href="#inicio" class="btn btn-primary header-cta-btn">
+                        Agendar Diagnóstico
+                    </a>
+                </div>
+                
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu de Navegação">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero section" id="inicio">
+        
+        <!-- HERO VIDEO BACKGROUND -->
+        <div class="hero-video-bg">
+            <video autoplay loop muted playsinline class="neon-video">
+                <source src="https://darker-supply.s3.us-east-005.backblazeb2.com/Flowing+Neon+Curve+Lines_1.mp4" type="video/mp4">
+            </video>
+            <div class="video-color-overlay"></div>
+        </div>
+
+
+
+        
+        <div class="container" style="position: relative; z-index: 10;">
+            <div class="hero-grid">
+                
+                <!-- Hero Left: Strategic Message -->
+                <div class="hero-left">
+                    <div class="ease-badge">
+                        <span class="ease-badge-tag">Novidade</span>
+                        <div class="ease-badge-text">
+                            Vittus Advisory v2.6 <i data-lucide="arrow-right" class="ease-badge-icon" style="width: 12px; height: 12px;"></i>
+                        </div>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Cuidamos da estrutura das suas empresas para você <span>focar no crescimento.</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Centralizamos posicionamento de marca, inteligência de tráfego pago, presença corporativa e arquitetura de vendas para empresários que exigem governança e consolidação de mercado.
+                    </p>
+                    
+                    <div class="hero-pillars">
+                        <div class="hero-pillar-item">
+                            <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+                            <span>Gestão centralizada de múltiplos ecossistemas de negócios</span>
+                        </div>
+                        <div class="hero-pillar-item">
+                            <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+                            <span>Estrutura integrada por corpo de especialistas sênior</span>
+                        </div>
+                        <div class="hero-pillar-item">
+                            <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+                            <span>Construção de autoridade voltada ao segmento de alto padrão</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Right: Qualification Form -->
+                <div class="hero-right">
+                    <div class="form-container">
+                        <div class="form-header">
+                            <h3 class="form-title">Sessão Estratégica</h3>
+                            <p class="form-desc">Preencha as informações abaixo para qualificarmos seu diagnóstico estratégico.</p>
+                            <div class="form-progress-bar">
+                                <div class="form-progress-fill" id="form-progress-fill"></div>
+                            </div>
+                        </div>
+                        
+                        <form id="qualification-form" novalidate>
+                            <!-- Step 1: Personal Info -->
+                            <div class="form-step active" data-step="1">
+                                <div class="form-group">
+                                    <label class="form-label">Nome Completo</label>
+                                    <input type="text" id="form-name" class="form-input" placeholder="Ex: Roberto Silveira" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">E-mail Corporativo</label>
+                                    <input type="email" id="form-email" class="form-input" placeholder="Ex: roberto@grupo.com.br" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Telefone de Contato</label>
+                                    <input type="tel" id="form-phone" class="form-input" placeholder="Ex: (11) 99999-9999" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2: Company Info -->
+                            <div class="form-step" data-step="2">
+                                <div class="form-group">
+                                    <label class="form-label">Razão Social / Nome da Empresa principal</label>
+                                    <input type="text" id="form-company" class="form-input" placeholder="Ex: Grupo Silveira" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">CNPJ Corporativo (Opcional)</label>
+                                    <input type="text" id="form-cnpj" class="form-input" placeholder="Ex: 00.000.000/0000-00">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Segmento de Atuação</label>
+                                    <div class="form-select-wrapper">
+                                        <select id="form-segment" class="form-input" required>
+                                            <option value="" disabled selected>Selecionar segmento</option>
+                                            <option value="Serviços / Consultoria">Serviços / Consultoria</option>
+                                            <option value="Rede de Franquias">Rede de Franquias</option>
+                                            <option value="Holding / Grupo de Negócios">Holding / Grupo de Negócios</option>
+                                            <option value="Tecnologia / Corporativo">Tecnologia / Corporativo</option>
+                                            <option value="Indústria / Varejo">Indústria / Varejo</option>
+                                            <option value="Agronegócio">Agronegócio</option>
+                                            <option value="Outros">Outros</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3: Qualification & Budgets -->
+                            <div class="form-step" data-step="3">
+                                <div class="form-group">
+                                    <label class="form-label">Faturamento Mensal do Grupo</label>
+                                    <div class="form-select-wrapper">
+                                        <select id="form-revenue" class="form-input" required>
+                                            <option value="" disabled selected>Selecionar faturamento</option>
+                                            <option value="Até R$ 50 mil">Até R$ 50 mil</option>
+                                            <option value="R$ 50 mil a R$ 100 mil">R$ 50 mil a R$ 100 mil</option>
+                                            <option value="R$ 100 mil a R$ 250 mil">R$ 100 mil a R$ 250 mil</option>
+                                            <option value="R$ 250 mil a R$ 500 mil">R$ 250 mil a R$ 500 mil</option>
+                                            <option value="R$ 500 mil a R$ 1 Milhão">R$ 500 mil a R$ 1 Milhão</option>
+                                            <option value="Mais de R$ 1 Milhão">Mais de R$ 1 Milhão</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Orçamento mensal disponível para investir na estrutura?</label>
+                                    <div class="form-select-wrapper">
+                                        <select id="form-invest" class="form-input" required>
+                                            <option value="" disabled selected>Selecionar resposta</option>
+                                            <option value="Sim, possuo orçamento disponível.">Sim, possuo orçamento disponível.</option>
+                                            <option value="Não, apenas pesquisando informações.">Não, apenas pesquisando informações.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Form Buttons -->
+                            <div class="form-actions">
+                                <button type="button" class="btn form-btn-prev" id="form-btn-prev" style="display: none;">Voltar</button>
+                                <button type="button" class="btn btn-primary form-btn-next" id="form-btn-next">Avançar <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i></button>
+                                <button type="submit" class="btn btn-primary form-btn-submit" id="form-btn-submit" style="display: none;">Agendar Diagnóstico</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MARQUEE (Infinite Logo Scroll) ==================== -->
+    <section class="marquee-section" aria-label="Parceiros e holdings assessoradas">
+        <div class="marquee-fade-left"></div>
+        <div class="marquee-fade-right"></div>
+        
+        <div class="marquee-container">
+            <!-- Set 1 -->
+            <div class="marquee-item">
+                <img src="logo-performance-new.png" alt="Performance" class="marquee-img" style="height: 170px; max-height: 170px;">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-teodoro-new.png" alt="Teodoro & Siqueira Advogados" class="marquee-img">
+            </div>
+
+            <div class="marquee-item">
+                <img src="logo-gm.png" alt="GM" class="marquee-img">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-mcallfloors-new.png" alt="MC All Floors" class="marquee-img">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-nossaotica-new.png" alt="Nossa Ótica" class="marquee-img">
+            </div>
+            
+            <!-- Set 2 -->
+            <div class="marquee-item">
+                <img src="logo-performance-new.png" alt="Performance" class="marquee-img" style="height: 170px; max-height: 170px;">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-teodoro-new.png" alt="Teodoro & Siqueira Advogados" class="marquee-img">
+            </div>
+
+            <div class="marquee-item">
+                <img src="logo-gm.png" alt="GM" class="marquee-img">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-mcallfloors-new.png" alt="MC All Floors" class="marquee-img">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-nossaotica-new.png" alt="Nossa Ótica" class="marquee-img">
+            </div>
+            
+            <!-- Set 3 -->
+            <div class="marquee-item">
+                <img src="logo-performance-new.png" alt="Performance" class="marquee-img" style="height: 170px; max-height: 170px;">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-teodoro-new.png" alt="Teodoro & Siqueira Advogados" class="marquee-img">
+            </div>
+
+            <div class="marquee-item">
+                <img src="logo-gm.png" alt="GM" class="marquee-img">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-mcallfloors-new.png" alt="MC All Floors" class="marquee-img">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-nossaotica-new.png" alt="Nossa Ótica" class="marquee-img">
+            </div>
+            
+            <!-- Set 4 -->
+            <div class="marquee-item">
+                <img src="logo-performance-new.png" alt="Performance" class="marquee-img" style="height: 170px; max-height: 170px;">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-teodoro-new.png" alt="Teodoro & Siqueira Advogados" class="marquee-img">
+            </div>
+
+            <div class="marquee-item">
+                <img src="logo-gm.png" alt="GM" class="marquee-img">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-mcallfloors-new.png" alt="MC All Floors" class="marquee-img">
+            </div>
+            <div class="marquee-item">
+                <img src="logo-nossaotica-new.png" alt="Nossa Ótica" class="marquee-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== IMPACT QUOTE 1 ==================== -->
+    <section class="impact-quote reveal" id="quote-1">
+        <div class="container">
+            <div class="quote-content">
+                <blockquote class="quote-text">
+                    "Empresários não deveriam perder tempo resolvendo problemas operacionais do digital."
+                </blockquote>
+                <div class="quote-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SOBRE A VITTUS (3-Column Editorial — NO IMAGE) ==================== -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Nossa Estrutura</div>
+                <h2 class="section-title">Nada de assessoria virtual ou amadora.</h2>
+                <p class="section-subtitle">A VITTUS é uma assessoria estratégica de alto padrão. Operamos com sede corporativa e corpo sênior de assessores, centralizando todas as frentes de inteligência do seu ecossistema de marcas.</p>
+            </div>
+            
+            <div class="about-pillars-grid">
+                <!-- Pillar 1 -->
+                <div class="about-pillar-card reveal">
+                    <div class="about-pillar-icon">
+                        <i data-lucide="shield" style="width: 20px; height: 20px;"></i>
+                    </div>
+                    <h3 class="about-pillar-title">Soberania Operacional</h3>
+                    <p class="about-pillar-desc">Centralização absoluta de todas as frentes estratégicas e operacionais do seu ecossistema de marcas sob um único corpo assessor.</p>
+                </div>
+                
+                <!-- Pillar 2 -->
+                <div class="about-pillar-card reveal reveal-delay-1">
+                    <div class="about-pillar-icon">
+                        <i data-lucide="lock" style="width: 20px; height: 20px;"></i>
+                    </div>
+                    <h3 class="about-pillar-title">Confidencialidade Estrita</h3>
+                    <p class="about-pillar-desc">NDA corporativo integrado, governança sênior e processos blindados para proteger a inteligência estratégica do seu grupo.</p>
+                </div>
+                
+                <!-- Pillar 3 -->
+                <div class="about-pillar-card reveal reveal-delay-2">
+                    <div class="about-pillar-icon">
+                        <i data-lucide="trending-up" style="width: 20px; height: 20px;"></i>
+                    </div>
+                    <h3 class="about-pillar-title">Crescimento Estruturado</h3>
+                    <p class="about-pillar-desc">Processos de alta performance projetados para escala sustentável e previsibilidade de resultados a longo prazo.</p>
+                </div>
+            </div>
+            
+            <div class="about-cta reveal reveal-delay-3">
+                <a href="#inicio" class="btn btn-primary">
+                    Agendar Diagnóstico <i data-lucide="arrow-up-right" class="btn-arrow-icon" style="width: 16px; height: 16px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== IMPACT QUOTE 2 ==================== -->
+    <section class="impact-quote reveal" id="quote-2">
+        <div class="container">
+            <div class="quote-content">
+                <blockquote class="quote-text">
+                    "Enquanto você administra seus negócios, a VITTUS cuida da estrutura que sustenta o crescimento."
+                </blockquote>
+                <div class="quote-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES (10 Cards) ==================== -->
+    <section class="section" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Soluções Corporativas</div>
+                <h2 class="section-title">Nossas Áreas de Atuação</h2>
+                <p class="section-subtitle">Processos completos de branding, atração de clientes e fluxos operacionais para marcas de prestígio.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div>
+                        <div class="service-icon"><i data-lucide="target" style="width: 18px; height: 18px;"></i></div>
+                        <h3 class="service-title">Posicionamento Estratégico</h3>
+                        <p class="service-description">Definimos a narrativa institucional e de autoridade da sua marca para alinhar a comunicação diretamente com clientes de alto ticket.</p>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-1">
+                    <div>
+                        <div class="service-icon"><i data-lucide="trending-up" style="width: 18px; height: 18px;"></i></div>
+                        <h3 class="service-title">Mídia Paga</h3>
+                        <p class="service-description">Planejamento e gestão de tráfego pago corporativo focado estritamente em aquisição de clientes qualificados em múltiplos canais.</p>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-2">
+                    <div>
+                        <div class="service-icon"><i data-lucide="award" style="width: 18px; height: 18px;"></i></div>
+                        <h3 class="service-title">Branding</h3>
+                        <p class="service-description">Gestão e construção de valor de marca para consolidar liderança e remover suas soluções da concorrência de preços.</p>
+                    </div>
+                </div>
+
+                <div class="service-card reveal">
+                    <div>
+                        <div class="service-icon"><i data-lucide="briefcase" style="width: 18px; height: 18px;"></i></div>
+                        <h3 class="service-title">Estrutura Comercial</h3>
+                        <p class="service-description">Alinhamos funis comerciais internos, implementando ferramentas de CRM, métricas de conversão e processos consultivos de vendas.</p>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-1">
+                    <div>
+                        <div class="service-icon"><i data-lucide="code" style="width: 18px; height: 18px;"></i></div>
+                        <h3 class="service-title">Desenvolvimento de Sites</h3>
+                        <p class="service-description">Construção de plataformas corporativas sólidas e institucionais com arquitetura limpa, segurança e alto apelo estético.</p>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-2">
+                    <div>
+                        <div class="service-icon"><i data-lucide="globe" style="width: 18px; height: 18px;"></i></div>
+                        <h3 class="service-title">Gestão de Presença Digital</h3>
+                        <p class="service-description">Curadoria e coordenação dos principais pontos de contato digitais de suas marcas para uniformidade e elegância.</p>
+                    </div>
+                </div>
+
+                <div class="service-card reveal">
+                    <div>
+                        <div class="service-icon"><i data-lucide="palette" style="width: 18px; height: 18px;"></i></div>
+                        <h3 class="service-title">Identidade Visual</h3>
+                        <p class="service-description">Criação de marcas, tipografia, paletas e manuais corporativos sob medida com design limpo e duradouro.</p>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-1">
+                    <div>
+                        <div class="service-icon"><i data-lucide="cpu" style="width: 18px; height: 18px;"></i></div>
+                        <h3 class="service-title">Automação e Atendimento</h3>
+                        <p class="service-description">Integração de canais de comunicação com fluxos inteligentes para resposta imediata com excelente tom de atendimento.</p>
+                    </div>
+                </div>
+
+                <div class="service-card reveal reveal-delay-2">
+                    <div>
+                        <div class="service-icon"><i data-lucide="layers" style="width: 18px; height: 18px;"></i></div>
+                        <h3 class="service-title">Estrutura Empresarial</h3>
+                        <p class="service-description">Coordenação integrada operacional de diferentes marcas do mesmo grupo para maximizar eficiência administrativa.</p>
+                    </div>
+                </div>
+
+                <div class="service-card reveal">
+                    <div>
+                        <div class="service-icon"><i data-lucide="shrink" style="width: 18px; height: 18px;"></i></div>
+                        <h3 class="service-title">Crescimento e Escala</h3>
+                        <p class="service-description">Planos sob medida de expansão contínua com otimização constante de custos e captação de leads qualificados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== IMPACT QUOTE 3 ==================== -->
+    <section class="impact-quote reveal" id="quote-3">
+        <div class="container">
+            <div class="quote-content">
+                <blockquote class="quote-text">
+                    "Presença forte gera percepção forte."
+                </blockquote>
+                <div class="quote-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== METHOD (Vertical Timeline) ==================== -->
+    <section class="section" id="metodo">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Fluxo Operacional</div>
+                <h2 class="section-title">O Processo Vittus</h2>
+                <p class="section-subtitle">Metodologia corporativa rígida e transparente estruturada para governança de marcas e escala.</p>
+            </div>
+            
+            <div class="method-container">
+                <div class="method-line"></div>
+                <div class="method-line-active"></div>
+                
+                <!-- Step 1 -->
+                <div class="method-step-row reveal">
+                    <div class="method-step-circle"></div>
+                    <div class="method-step-meta">ETAPA 01</div>
+                    <h3 class="method-step-title">Diagnóstico Estratégico</h3>
+                    <p class="method-step-desc">Auditamos com precisão a atual estrutura de captação digital, posicionamento e processos comerciais do seu grupo.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="method-step-row reveal reveal-delay-1">
+                    <div class="method-step-circle"></div>
+                    <div class="method-step-meta">ETAPA 02</div>
+                    <h3 class="method-step-title">Posicionamento</h3>
+                    <p class="method-step-desc">Ajustamos e consolidamos a comunicação executiva institucional para ampliar a autoridade de mercado de suas empresas.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="method-step-row reveal reveal-delay-2">
+                    <div class="method-step-circle"></div>
+                    <div class="method-step-meta">ETAPA 03</div>
+                    <h3 class="method-step-title">Estrutura Digital</h3>
+                    <p class="method-step-desc">Construímos ecossistemas digitais limpos e organizados (sites e canais institucionais) com excelente padrão visual.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="method-step-row reveal">
+                    <div class="method-step-circle"></div>
+                    <div class="method-step-meta">ETAPA 04</div>
+                    <h3 class="method-step-title">Mídia Paga</h3>
+                    <p class="method-step-desc">Implementamos campanhas de atração corporativa focadas em conversão qualificada e geração constante de contatos.</p>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="method-step-row reveal reveal-delay-1">
+                    <div class="method-step-circle"></div>
+                    <div class="method-step-meta">ETAPA 05</div>
+                    <h3 class="method-step-title">Estrutura Comercial</h3>
+                    <p class="method-step-desc">Alinhamos os fluxos de recepção de leads com ferramentas ágeis para garantir resposta rápida e assertiva pelo seu time.</p>
+                </div>
+                
+                <!-- Step 6 -->
+                <div class="method-step-row reveal reveal-delay-2">
+                    <div class="method-step-circle"></div>
+                    <div class="method-step-meta">ETAPA 06</div>
+                    <h3 class="method-step-title">Escala</h3>
+                    <p class="method-step-desc">Análise contínua de métricas corporativas para direcionamento inteligente de investimentos de expansão nas marcas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== IMPACT QUOTE 4 ==================== -->
+    <section class="impact-quote reveal" id="quote-4">
+        <div class="container">
+            <div class="quote-content">
+                <blockquote class="quote-text">
+                    "Empresas organizadas crescem mais rápido."
+                </blockquote>
+                <div class="quote-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CASES (Testimonials) ==================== -->
+    <section class="section" id="cases">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Histórias de clientes</div>
+                <h2 class="section-title">Expanda mais rápido <em class="serif-italic">do</em> que nunca.</h2>
+                <p class="section-subtitle">A Assessoria Vittus não é apenas mais uma consultoria genérica. Ela foi projetada para organizar sua estrutura corporativa e fazer a diferença na sua escala.</p>
+            </div>
+            
+            <div class="cases-grid-wrapper">
+                <div class="cases-grid">
+                    
+                    <!-- COLUMN 1 (Scrolls UP) -->
+                    <div class="cases-column">
+                        <!-- Set 1 -->
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "A centralização das frentes estratégicas sob os bastidores da Vittus otimizou drasticamente nossa gestão de tempo. Nossas marcas finalmente refletem um posicionamento premium e a captação de alto padrão se tornou previsível."
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">A</div>
+                                <div class="case-author">
+                                    <span class="author-name">Alexandre Medeiros</span>
+                                    <span class="author-company">CEO Medeiros Holding Group</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "O refinamento estético e o rigor do método Vittus se encaixam perfeitamente em nosso fluxo de trabalho de alto nível."
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">M</div>
+                                <div class="case-author">
+                                    <span class="author-name">Marcos Siqueira</span>
+                                    <span class="author-company">Sócio Teodoro & Siqueira</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Set 2 (Duplicate for infinite loop) -->
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "A centralização das frentes estratégicas sob os bastidores da Vittus otimizou drasticamente nossa gestão de tempo. Nossas marcas finalmente refletem um posicionamento premium e a captação de alto padrão se tornou previsível."
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">A</div>
+                                <div class="case-author">
+                                    <span class="author-name">Alexandre Medeiros</span>
+                                    <span class="author-company">CEO Medeiros Holding Group</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "O refinamento estético e o rigor do método Vittus se encaixam perfeitamente em nosso fluxo de trabalho de alto nível."
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">M</div>
+                                <div class="case-author">
+                                    <span class="author-name">Marcos Siqueira</span>
+                                    <span class="author-company">Sócio Teodoro & Siqueira</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COLUMN 2 (Scrolls DOWN) -->
+                    <div class="cases-column reverse">
+                        <!-- Set 1 -->
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "Com a Vittus, nosso processo de geração de relatórios e controle de filiais é perfeito e eficiente. A governança implementada nos economizou muito tempo!"
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">C</div>
+                                <div class="case-author">
+                                    <span class="author-name">Cláudia Vasconcellos</span>
+                                    <span class="author-company">Diretora Rede Lumini</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "Antes a gestão era caótica. A Vittus nos entregou um dashboard gerencial unificado que é um verdadeiro divisor de águas!"
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">L</div>
+                                <div class="case-author">
+                                    <span class="author-name">Laura Bittencourt</span>
+                                    <span class="author-company">Fundadora Clínica Aura</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Set 2 (Duplicate for infinite loop) -->
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "Com a Vittus, nosso processo de geração de relatórios e controle de filiais é perfeito e eficiente. A governança implementada nos economizou muito tempo!"
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">C</div>
+                                <div class="case-author">
+                                    <span class="author-name">Cláudia Vasconcellos</span>
+                                    <span class="author-company">Diretora Rede Lumini</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "Antes a gestão era caótica. A Vittus nos entregou um dashboard gerencial unificado que é um verdadeiro divisor de águas!"
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">L</div>
+                                <div class="case-author">
+                                    <span class="author-name">Laura Bittencourt</span>
+                                    <span class="author-company">Fundadora Clínica Aura</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COLUMN 3 (Scrolls UP) -->
+                    <div class="cases-column">
+                        <!-- Set 1 -->
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "A integração das frentes de mídia e comercial da Vittus torna o crescimento contínuo algo muito fácil. É incrivelmente previsível."
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">R</div>
+                                <div class="case-author">
+                                    <span class="author-name">Roberto Ferraz</span>
+                                    <span class="author-company">Fundador Grupo Nexus</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "Os painéis personalizáveis e o modelo estrutural deles nos permitem focar no que é mais importante: o crescimento do negócio."
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">P</div>
+                                <div class="case-author">
+                                    <span class="author-name">Paulo Rocha</span>
+                                    <span class="author-company">Rocha & Rocha Brasil</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Set 2 (Duplicate for infinite loop) -->
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "A integração das frentes de mídia e comercial da Vittus torna o crescimento contínuo algo muito fácil. É incrivelmente previsível."
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">R</div>
+                                <div class="case-author">
+                                    <span class="author-name">Roberto Ferraz</span>
+                                    <span class="author-company">Fundador Grupo Nexus</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <blockquote class="case-quote">
+                                "Os painéis personalizáveis e o modelo estrutural deles nos permitem focar no que é mais importante: o crescimento do negócio."
+                            </blockquote>
+                            <div class="case-footer">
+                                <div class="case-avatar">P</div>
+                                <div class="case-author">
+                                    <span class="author-name">Paulo Rocha</span>
+                                    <span class="author-company">Rocha & Rocha Brasil</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA FINAL ==================== -->
+    <section class="section" id="contato">
+        <div class="container">
+            <div class="cta-box reveal">
+                <div class="section-tag">Sessão Estratégica</div>
+                <h2>Sua empresa precisa de estrutura para crescer.</h2>
+                <p>A VITTUS assessora empresários a organizarem, consolidarem e expandirem múltiplos negócios sob processos rígidos de governança e alta performance.</p>
+                <a href="#inicio" class="btn btn-primary">
+                    Iniciar Diagnóstico <i data-lucide="arrow-up-right" class="btn-arrow-icon" style="width: 16px; height: 16px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div class="footer-info">
+                    <a href="#" class="logo">
+                        <img src="Black White Geometric Digital Startup Logo.jpg" alt="ASSESSORIA VITTUS" class="logo-img">
+                    </a>
+                    <p class="footer-tagline">Assessoria estratégica presencial de alto nível para empresários que exigem governança e organização sólida de seus ecossistemas de negócios.</p>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com/assessoriavittus" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+                            <i data-lucide="instagram" style="width: 16px; height: 16px;"></i>
+                        </a>
+                        <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp">
+                            <i data-lucide="message-square" style="width: 16px; height: 16px;"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-links-title">Assessoria</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#inicio" class="footer-link">Início</a></li>
+                        <li><a href="#sobre" class="footer-link">Sobre a Vittus</a></li>
+                        <li><a href="#servicos" class="footer-link">Serviços</a></li>
+                        <li><a href="#metodo" class="footer-link">Método</a></li>
+                        <li><a href="#cases" class="footer-link">Clientes</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-links-title">Contato & Sede</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="footer-link">WhatsApp de Atendimento</a></li>
+                        <li><a href="mailto:contato@assessoriavittus.com.br" class="footer-link">contato@assessoriavittus.com.br</a></li>
+                        <li><span class="footer-link" style="cursor: default;">Segunda a Sexta — Horário Comercial</span></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2026 ASSESSORIA VITTUS. Todos os direitos reservados.</p>
+                <p class="footer-copy" style="opacity: 0.5;">Acordo de Confidencialidade e NDA inclusos em todas as contratações.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>

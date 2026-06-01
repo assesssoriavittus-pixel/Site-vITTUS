@@ -1,0 +1,10 @@
+# Temporary files
+*.tmp
+*.bak
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Large video files (hosted externally via CDN)
+Flowing+Neon+Curve+Lines_1.mp4
