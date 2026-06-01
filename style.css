@@ -383,7 +383,6 @@ a {
     height: 65px;
     width: auto;
     object-fit: contain;
-    mix-blend-mode: lighten;
     transition: var(--transition-smooth);
     transform: scale(1.65);
     transform-origin: left center;
@@ -392,7 +391,6 @@ a {
     height: 65px;
     width: auto;
     object-fit: contain;
-    mix-blend-mode: lighten;
     transition: var(--transition-smooth);
     transform: scale(1.65);
     transform-origin: left center;
