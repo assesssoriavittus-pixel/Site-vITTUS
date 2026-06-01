@@ -586,8 +586,10 @@ a {
    FORM (Glassmorphic — Scalable-inspired)
    ══════════════════════════════════════════════════════════ */
 .form-container-new {
-    background: #111111;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(18, 18, 28, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius-lg);
     padding: 3rem;
     box-shadow: 0 25px 60px rgba(0,0,0,0.6);
@@ -606,11 +608,12 @@ a {
 }
 
 .form-main-title {
+    font-family: var(--font-heading);
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 2.5rem;
-    color: #ffffff;
+    color: var(--color-text-primary);
     text-align: left;
 }
 
@@ -623,44 +626,47 @@ a {
 .step-divider {
     display: flex;
     align-items: center;
-    color: #f5b700;
-    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     margin-bottom: -1rem;
 }
 .step-divider::before {
     content: "";
     flex: 1;
     height: 1px;
-    background: #f5b700;
+    background: var(--color-border);
     margin-right: 15px;
 }
 .step-divider::after {
     content: "";
     flex: 2;
     height: 1px;
-    background: #f5b700;
+    background: var(--color-border);
     margin-left: 15px;
-    opacity: 0.3;
 }
 
 .step-info-box {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
     align-items: flex-start;
     text-align: left;
 }
 
 .step-icon {
-    width: 45px;
-    height: 45px;
-    background: #f5b700;
-    border-radius: 4px;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: #000000;
+    color: var(--color-accent);
 }
 .step-icon i {
     width: 22px;
@@ -687,37 +693,40 @@ a {
 }
 
 .form-group-simple {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
 }
 
 .form-label-simple {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-primary);
     margin-bottom: 0.5rem;
 }
 
 .form-input-simple {
     width: 100%;
-    background: #333333;
-    border: 1px solid #444444;
-    color: #ffffff;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
     font-family: var(--font-body);
-    font-size: 0.95rem;
-    padding: 1.1rem 1.2rem;
-    border-radius: 4px;
+    font-size: 0.9rem;
+    padding: 0.95rem 1.15rem;
+    border-radius: var(--border-radius-sm);
     outline: none;
-    transition: all 0.3s ease;
+    transition: var(--transition-snappy);
+    cursor: none;
 }
 
 .form-input-simple::placeholder {
-    color: #aaaaaa;
+    color: var(--color-text-muted);
 }
 
 .form-input-simple:focus {
-    border-color: var(--color-accent);
-    background: #3a3a3a;
+    border-color: rgba(255,255,255,0.25);
+    background: rgba(0,0,0,0.6);
 }
 
 .phone-wrapper {
@@ -729,13 +738,15 @@ a {
     position: absolute;
     left: 1rem;
     font-size: 1.1rem;
+    pointer-events: none;
 }
 .with-flag {
-    padding-left: 3rem !important;
+    padding-left: 3.2rem !important;
 }
 
 select.select-simple {
     appearance: none;
+    cursor: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
@@ -744,21 +755,23 @@ select.select-simple {
 
 .form-submit-simple {
     width: 100%;
-    margin-top: 1rem;
-    padding: 1.2rem;
+    margin-top: 1.8rem;
+    padding: 1.1rem;
     font-size: 1rem;
     font-weight: 600;
-    background: #f5b700;
+    background: var(--color-accent);
     color: #000;
-    border-radius: 4px;
+    border-radius: var(--border-radius-sm);
     border: none;
     cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: var(--transition-snappy);
+    font-family: var(--font-body);
 }
 
 .form-submit-simple:hover {
+    background: var(--color-accent-hover);
     transform: translateY(-2px);
-    opacity: 0.9;
+    box-shadow: 0 5px 15px rgba(255,255,255,0.1);
 }
 
 @media (max-width: 991px) {
