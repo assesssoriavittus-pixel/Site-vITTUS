@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     `💰 *Faturamento:* ${revenue}\n` +
                     `📈 *Investimento:* ${invest}`;
 
-                const whatsappNumber = '556294525599';
+                const whatsappNumber = '5562994525599';
                 const encodedMessage = encodeURIComponent(message);
                 const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
