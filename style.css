@@ -1518,20 +1518,3 @@ select.select-simple {
     background: linear-gradient(to top, #000000 0%, transparent 100%);
     z-index: 2;
 }
-/* Slightly dimmed so content pops */
-    filter: saturate(1.5);
-}
-.video-color-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    /* The user wanted blue lights. Using a rich blue color for mix-blend-mode */
-    background: #0044ff;
-    mix-blend-mode: color; /* Forces the video neon colors to become exactly this blue */
-}
-/* Optional: add a subtle gradient fade at bottom to blend with content seamlessly if scrolling far */
-.hero-video-bg::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; width: 100%; height: 30vh;
-    background: linear-gradient(to top, #000000 0%, transparent 100%);
-}

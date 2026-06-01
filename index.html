@@ -73,7 +73,7 @@
         
         <!-- HERO VIDEO BACKGROUND -->
         <div class="hero-video-bg">
-            <video autoplay loop muted playsinline class="neon-video">
+            <video autoplay loop muted playsinline webkit-playsinline preload="auto" defaultMuted class="neon-video">
                 <source src="https://darker-supply.s3.us-east-005.backblazeb2.com/Flowing+Neon+Curve+Lines_1.mp4" type="video/mp4">
             </video>
             <div class="video-color-overlay"></div>
@@ -820,5 +820,15 @@
 
     <!-- Script File -->
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var videos = document.querySelectorAll('video.neon-video');
+            videos.forEach(function(vid) {
+                vid.play().catch(function(e) {
+                    console.log("Autoplay prevented:", e);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
