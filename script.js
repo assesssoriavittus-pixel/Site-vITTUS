@@ -223,6 +223,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------------
     // 6. Multi-Step Qualification Form
     // ----------------------------------------------------------
+
+    // ⚡ GOOGLE SHEETS INTEGRATION
+    // After deploying the Apps Script, paste your Web App URL below:
+    const GOOGLE_SHEETS_URL = 'COLE_SUA_URL_AQUI';
+
     const formSteps = document.querySelectorAll('.form-step');
     const progressFill = document.getElementById('form-progress-fill');
     const btnPrev = document.getElementById('form-btn-prev');
@@ -321,6 +326,30 @@ document.addEventListener('DOMContentLoaded', () => {
             return isValid;
         };
 
+        // --- Send data to Google Sheets ---
+        const sendToGoogleSheets = async (formData) => {
+            if (!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL === 'COLE_SUA_URL_AQUI') {
+                console.warn('⚠️ Google Sheets URL não configurada. Configure a variável GOOGLE_SHEETS_URL no script.js');
+                return false;
+            }
+
+            try {
+                await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+                console.log('✅ Dados enviados para o Google Sheets');
+                return true;
+            } catch (error) {
+                console.error('❌ Erro ao enviar para o Google Sheets:', error);
+                return false;
+            }
+        };
+
         // --- Navigation ---
         if (btnNext) {
             btnNext.addEventListener('click', () => {
@@ -340,9 +369,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --- Submit to WhatsApp ---
+        // --- Submit to Google Sheets + WhatsApp ---
         if (btnSubmit) {
-            btnSubmit.addEventListener('click', (e) => {
+            btnSubmit.addEventListener('click', async (e) => {
                 e.preventDefault();
 
                 if (!validateStep(currentStep)) return;
@@ -360,6 +389,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const revenue = document.getElementById('form-revenue')?.value || '';
                 const invest = document.getElementById('form-invest')?.value || '';
 
+                // Data object for Google Sheets
+                const formData = {
+                    timestamp: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
+                    nome: name,
+                    email: email,
+                    telefone: phone,
+                    empresa: company,
+                    cnpj: cnpj,
+                    segmento: segment,
+                    faturamento: revenue,
+                    investimento: invest,
+                };
+
+                // 1) Send to Google Sheets (non-blocking)
+                sendToGoogleSheets(formData);
+
+                // 2) Build WhatsApp message
                 const message = `🏛️ *NOVA QUALIFICAÇÃO — ASSESSORIA VITTUS*\n\n` +
                     `👤 *Nome:* ${name}\n` +
                     `📧 *E-mail:* ${email}\n` +
@@ -370,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     `💰 *Faturamento:* ${revenue}\n` +
                     `📈 *Investimento:* ${invest}`;
 
-                const whatsappNumber = '5511999999999';
+                const whatsappNumber = '556294525599';
                 const encodedMessage = encodeURIComponent(message);
                 const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
