@@ -338,7 +338,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
             setTimeout(() => {
+                form.style.display = 'none';
+                
+                const successMsg = document.getElementById('form-success-message');
+                if (successMsg) {
+                    successMsg.style.display = 'block';
+                    if (typeof lucide !== 'undefined') {
+                        lucide.createIcons();
+                    }
+                }
+
                 window.open(whatsappURL, '_blank');
+                
                 btnSubmit.innerHTML = originalText;
                 btnSubmit.disabled = false;
             }, 1000);
