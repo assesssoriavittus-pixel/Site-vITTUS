@@ -338,14 +338,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
             setTimeout(() => {
-                form.style.display = 'none';
-                
-                const successMsg = document.getElementById('form-success-message');
-                if (successMsg) {
-                    successMsg.style.display = 'block';
+                const successPopup = document.getElementById('form-success-popup');
+                if (successPopup) {
+                    successPopup.style.display = 'flex';
                     if (typeof lucide !== 'undefined') {
                         lucide.createIcons();
                     }
+                    // Esconder o popup depois de 4 segundos
+                    setTimeout(() => {
+                        successPopup.style.display = 'none';
+                    }, 4000);
                 }
 
                 window.open(whatsappURL, '_blank');
