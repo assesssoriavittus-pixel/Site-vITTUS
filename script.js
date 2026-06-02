@@ -295,7 +295,19 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            if (!validateForm()) return;
+            const errorMsg = document.getElementById('form-error-message');
+
+            if (!validateForm()) {
+                if (errorMsg) {
+                    errorMsg.style.display = 'block';
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                }
+                return;
+            }
+            
+            if (errorMsg) {
+                errorMsg.style.display = 'none';
+            }
 
             const originalText = btnSubmit.innerHTML;
             btnSubmit.innerHTML = 'Processando...';
