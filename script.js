@@ -336,6 +336,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1) Send to Google Sheets (non-blocking)
             sendToGoogleSheets(formData);
 
+            // ⚡ Dispara o evento de Lead (Cadastro) no Pixel da Meta
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead', {
+                    content_name: 'Formulário Vittus',
+                    content_category: segment || 'Geral'
+                });
+            }
+
             // 2) Build WhatsApp message
             const message = `🏛️ *NOVA QUALIFICAÇÃO — ASSESSORIA VITTUS*\n\n` +
                 `👤 *Nome:* ${name}\n` +
