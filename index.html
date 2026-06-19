@@ -72,9 +72,9 @@
                 </nav>
                 
                 <div>
-                    <a href="#inicio" class="btn btn-primary header-cta-btn">
+                    <button class="btn btn-primary header-cta-btn open-diagnostic-modal">
                         Agendar Diagnóstico
-                    </a>
+                    </button>
                 </div>
                 
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu de Navegação">
@@ -135,89 +135,21 @@
                     </div>
                 </div>
                 
-                <!-- Hero Right: Qualification Form -->
+                <!-- Hero Right: Qualification CTA -->
                 <div class="hero-right">
-                    <div class="form-container-new">
-                        <div class="form-left-col">
-                            <h3 class="form-main-title">Cadastre-se e receba o<br>contato do nosso time!</h3>
-                            
-                            <div class="form-steps-info">
-                                <div class="step-divider"><span>Passo 1</span></div>
-                                <div class="step-info-box">
-                                    <div class="step-icon">
-                                        <i data-lucide="user"></i>
-                                    </div>
-                                    <div class="step-text">
-                                        <h4>Complete o formulário</h4>
-                                        <p>Forneça suas informações de contato. Garantimos a segurança total de seus dados. Serão usados apenas para contato.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="step-divider"><span>Passo 2</span></div>
-                                <div class="step-info-box">
-                                    <div class="step-icon">
-                                        <i data-lucide="phone"></i>
-                                    </div>
-                                    <div class="step-text">
-                                        <h4>Receba uma ligação personalizada</h4>
-                                        <p>Em um prazo de até 8 horas, um dos nossos especialistas entrará em contato diretamente para agendar a reunião mais crucial com você.</p>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="hero-cta-card reveal">
+                        <div class="hero-cta-icon">
+                            <i data-lucide="rocket" style="width: 24px; height: 24px; color: var(--accent-color);"></i>
                         </div>
+                        <h3 class="hero-cta-title">Sua estrutura precisa<br>refletir o seu potencial.</h3>
+                        <p class="hero-cta-desc">Descubra em 60 segundos como a Vittus pode organizar sua gestão e acelerar o crescimento dos seus negócios com uma consultoria de alto padrão.</p>
+                        <button class="btn btn-primary btn-large open-diagnostic-modal">
+                            Quero meu diagnóstico gratuito <i data-lucide="arrow-right" style="margin-left: 8px; width: 18px; height: 18px;"></i>
+                        </button>
                         
-                        <div class="form-right-col">
-                            <form id="qualification-form" novalidate>
-                                <div class="form-group-simple">
-                                    <input type="text" id="form-name" class="form-input-simple" placeholder="Seu nome" required>
-                                </div>
-                                <div class="form-group-simple">
-                                    <input type="email" id="form-email" class="form-input-simple" placeholder="Seu melhor e-mail" required>
-                                </div>
-                                <div class="form-group-simple phone-wrapper">
-                                    <span class="country-flag">🇧🇷</span>
-                                    <input type="tel" id="form-phone" class="form-input-simple with-flag" placeholder="Telefone" required>
-                                </div>
-                                <div class="form-group-simple">
-                                    <input type="text" id="form-company" class="form-input-simple" placeholder="Nome da empresa" required>
-                                </div>
-                                <div class="form-group-simple">
-                                    <label class="form-label-simple">Selecionar segmento</label>
-                                    <select id="form-segment" class="form-input-simple select-simple" required>
-                                        <option value="" disabled selected>Selecionar</option>
-                                        <option value="Serviços / Consultoria">Serviços / Consultoria</option>
-                                        <option value="Rede de Franquias">Rede de Franquias</option>
-                                        <option value="Holding / Grupo de Negócios">Holding / Grupo de Negócios</option>
-                                        <option value="Tecnologia / Corporativo">Tecnologia / Corporativo</option>
-                                        <option value="Indústria / Varejo">Indústria / Varejo</option>
-                                        <option value="Agronegócio">Agronegócio</option>
-                                        <option value="Pizzarias">Pizzarias</option>
-                                        <option value="Outros">Outros</option>
-                                    </select>
-                                </div>
-                                <div class="form-group-simple">
-                                    <label class="form-label-simple">Selecionar faturamento</label>
-                                    <select id="form-revenue" class="form-input-simple select-simple" required>
-                                        <option value="" disabled selected>Selecionar</option>
-                                        <option value="Abaixo de 50k">Abaixo de R$ 50 mil</option>
-                                        <option value="50k a 100k">R$ 50 mil a R$ 100 mil</option>
-                                        <option value="100k a 300k">R$ 100 mil a R$ 300 mil</option>
-                                        <option value="Acima de 300k">Acima de R$ 300 mil</option>
-                                    </select>
-                                </div>
-                                <div style="position: relative;">
-                                    <button type="submit" id="form-btn-submit" class="btn btn-primary form-submit-simple">Receber mais informações</button>
-                                    <!-- Popup de Sucesso (perto do botão) -->
-                                    <div id="form-success-popup" style="display: none; position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: rgba(30, 30, 30, 0.95); color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 500; white-space: nowrap; box-shadow: 0 8px 16px rgba(0,0,0,0.5); border: 1px solid #4CAF50; z-index: 50; backdrop-filter: blur(8px); align-items: center; justify-content: center; gap: 10px; font-family: var(--font-body, 'Inter', sans-serif);">
-                                        <i data-lucide="check-circle" style="color: #4CAF50; width: 20px; height: 20px;"></i>
-                                        Enviado com sucesso!
-                                    </div>
-                                </div>
-                                <div id="form-error-message" style="display: none; color: #ff4d4d; font-size: 13.5px; text-align: center; margin-top: 12px; font-weight: 500; font-family: var(--font-body, 'Inter', sans-serif);">
-                                    <i data-lucide="alert-circle" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: middle;"></i>
-                                    Algumas informações estão incorretas ou faltando.
-                                </div>
-                            </form>
+                        <div class="hero-cta-features">
+                            <div class="cta-feature"><i data-lucide="lock" style="width: 14px; height: 14px;"></i> 100% Seguro</div>
+                            <div class="cta-feature"><i data-lucide="clock" style="width: 14px; height: 14px;"></i> ~ 60 segundos</div>
                         </div>
                     </div>
                 </div>
@@ -859,5 +791,212 @@
             });
         });
     </script>
+    <!-- ==================== DIAGNOSTIC MODAL ==================== -->
+    <div class="diagnostic-modal-overlay" id="diagnostic-modal">
+        <div class="diagnostic-modal-container">
+            <button class="diagnostic-modal-close" aria-label="Fechar" id="close-modal-btn">
+                <i data-lucide="x"></i>
+            </button>
+            
+            <div class="modal-header">
+                <div class="modal-progress-bar">
+                    <div class="modal-progress-fill" id="modal-progress"></div>
+                </div>
+                <div class="modal-steps-indicator">
+                    <div class="step-dot active" data-step="1"><i data-lucide="check"></i> <span class="step-dot-label">Segmento</span></div>
+                    <div class="step-connector"></div>
+                    <div class="step-dot" data-step="2"><i data-lucide="check"></i> <span class="step-dot-label">Perfil</span></div>
+                    <div class="step-connector"></div>
+                    <div class="step-dot" data-step="3"><i data-lucide="check"></i> <span class="step-dot-label">Receita</span></div>
+                    <div class="step-connector"></div>
+                    <div class="step-dot" data-step="4"><i data-lucide="check"></i> <span class="step-dot-label">Contato</span></div>
+                </div>
+                <div class="modal-step-meta" id="modal-step-meta">
+                    <span id="modal-step-text">Passo 1 de 4</span>
+                    <span class="time-est">~ 60 segundos</span>
+                </div>
+            </div>
+
+            <div class="modal-body" id="modal-body">
+                <!-- STEP 1 -->
+                <div class="modal-step active" id="step-1">
+                    <div class="step-subtitle">PASSO 1 DE 4 • SEGMENTO</div>
+                    <h2 class="step-title">Qual o segmento da sua empresa?</h2>
+                    <p class="step-desc">Selecione a opção que melhor representa seu negócio.</p>
+                    
+                    <div class="options-grid">
+                        <label class="radio-option">
+                            <input type="radio" name="segmento" value="Saúde">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Saúde</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="segmento" value="Finanças">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Finanças</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="segmento" value="Jurídico">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Jurídico</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="segmento" value="Tecnologia/SaaS">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Tecnologia/SaaS</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="segmento" value="Indústria">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Indústria</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="segmento" value="Serviços/Mentoria">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Serviços/Mentoria</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="segmento" value="Outro">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Outro</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="modal-step" id="step-2">
+                    <div class="step-subtitle">PASSO 2 DE 4 • PERFIL</div>
+                    <h2 class="step-title">Qual é o seu papel hoje na empresa?</h2>
+                    <p class="step-desc">Pra personalizar seu diagnóstico — falamos diferente com sócio do que com gerente.</p>
+                    
+                    <div class="options-grid">
+                        <label class="radio-option">
+                            <input type="radio" name="perfil" value="Sócio / Empresário">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Sócio / Empresário</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="perfil" value="Gerente / Líder">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Gerente / Líder</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="perfil" value="Colaborador">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Colaborador</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="perfil" value="Freelancer">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Freelancer</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="modal-step" id="step-3">
+                    <div class="step-subtitle">PASSO 3 DE 4 • QUALIFICAÇÃO</div>
+                    <h2 class="step-title">Qual a receita média mensal da empresa?</h2>
+                    <p class="step-desc">A análise muda completamente em cada faixa. Sem julgamento — só pra te entregar o diagnóstico certo.</p>
+                    
+                    <div class="options-grid vertical-options">
+                        <label class="radio-option">
+                            <input type="radio" name="receita" value="Abaixo de R$ 30 mil">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Abaixo de R$ 30 mil</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="receita" value="Entre R$ 30 mil e R$ 50 mil">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Entre R$ 30 mil e R$ 50 mil</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="receita" value="Entre R$ 50 mil e R$ 100 mil">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Entre R$ 50 mil e R$ 100 mil</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="receita" value="Entre R$ 100 mil e R$ 300 mil">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Entre R$ 100 mil e R$ 300 mil</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="receita" value="Entre R$ 300 mil e R$ 500 mil">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Entre R$ 300 mil e R$ 500 mil</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="receita" value="Entre R$ 500 mil e R$ 1 milhão">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Entre R$ 500 mil e R$ 1 milhão</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="receita" value="Acima de R$ 1 milhão">
+                            <span class="radio-circle"></span>
+                            <span class="radio-label">Acima de R$ 1 milhão</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="modal-step" id="step-4">
+                    <div class="step-subtitle">PASSO 4 DE 4 • CONTATO</div>
+                    <h2 class="step-title">Quase lá — onde a gente te encontra?</h2>
+                    
+                    <div class="contact-info-box">
+                        <strong>O que acontece agora:</strong> um estrategista entra em contato via WhatsApp em até <strong>4h úteis</strong> pra confirmar sua vaga. Zero spam. Zero ligação fria.
+                    </div>
+                    
+                    <div class="modal-form-fields">
+                        <div class="modal-form-group">
+                            <label>NOME COMPLETO <span class="required">*</span></label>
+                            <input type="text" id="modal-name" placeholder="Como podemos te chamar">
+                        </div>
+                        <div class="modal-form-group">
+                            <label>E-MAIL <span class="required">*</span></label>
+                            <input type="email" id="modal-email" placeholder="seu@email.com">
+                        </div>
+                        <div class="modal-form-group">
+                            <label>WHATSAPP <span class="required">*</span></label>
+                            <div class="phone-input-wrapper">
+                                <span class="phone-prefix">BR +55 <i data-lucide="chevron-down"></i></span>
+                                <input type="tel" id="modal-phone" placeholder="(11) 99999-9999">
+                            </div>
+                        </div>
+                        <div class="modal-form-group" style="display:none;">
+                            <!-- Fallback hidden input just in case they still want company logic in script.js but not shown to user -->
+                            <input type="text" id="modal-company" placeholder="Nome da empresa" value="N/A">
+                        </div>
+                    </div>
+                    
+                    <div id="modal-error-message" style="display: none; color: #ff4d4d; font-size: 13.5px; text-align: left; margin-top: 12px; font-weight: 500; font-family: var(--font-body, 'Inter', sans-serif);">
+                        <i data-lucide="alert-circle" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: middle;"></i>
+                        <span id="modal-error-text">Por favor, preencha todos os campos obrigatórios.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="btn-prev" style="opacity: 0; pointer-events: none;"><i data-lucide="arrow-left"></i> Voltar</button>
+                <button class="btn btn-primary btn-modal-next" id="btn-next">
+                    Continuar <i data-lucide="arrow-right"></i>
+                </button>
+                <button class="btn btn-primary btn-modal-next" id="btn-submit-modal" style="display: none;">
+                    Quero meu diagnóstico gratuito <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="modal-security-badge">
+                <i data-lucide="lock" style="width: 12px; height: 12px; margin-right: 4px;"></i> Dados seguros · Criptografia SSL · Sem spam
+            </div>
+            
+            <!-- Success popup for modal -->
+            <div id="modal-success-popup" style="display: none; position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); background: rgba(30, 30, 30, 0.95); color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 500; white-space: nowrap; box-shadow: 0 8px 16px rgba(0,0,0,0.5); border: 1px solid #4CAF50; z-index: 50; backdrop-filter: blur(8px); align-items: center; justify-content: center; gap: 10px; font-family: var(--font-body, 'Inter', sans-serif);">
+                <i data-lucide="check-circle" style="color: #4CAF50; width: 20px; height: 20px;"></i>
+                Enviado com sucesso!
+            </div>
+        </div>
+    </div>
 </body>
 </html>

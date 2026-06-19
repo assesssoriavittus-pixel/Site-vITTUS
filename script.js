@@ -221,18 +221,63 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------
-    // 6. Qualification Form (Simple)
+    // ----------------------------------------------------------
+    // 6. Diagnostic Modal (Multi-step)
     // ----------------------------------------------------------
 
     // ⚡ GOOGLE SHEETS INTEGRATION
     const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw8xAmGNz5vy5vSliIwb95rPm85R29Ke7kiZh6u32F73lymaoL3dEGyv02fEgOv1601/exec';
 
-    const form = document.getElementById('qualification-form');
-    const btnSubmit = document.getElementById('form-btn-submit');
+    const modalOverlay = document.getElementById('diagnostic-modal');
+    const openBtns = document.querySelectorAll('.open-diagnostic-modal');
+    const closeBtn = document.getElementById('close-modal-btn');
+    const btnNext = document.getElementById('btn-next');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnSubmit = document.getElementById('btn-submit-modal');
+    
+    const steps = document.querySelectorAll('.modal-step');
+    const stepDots = document.querySelectorAll('.step-dot');
+    const stepConnectors = document.querySelectorAll('.step-connector');
+    const progressBar = document.getElementById('modal-progress');
+    const stepMetaText = document.getElementById('modal-step-text');
+    const errorMsg = document.getElementById('modal-error-message');
+    const errorText = document.getElementById('modal-error-text');
 
-    if (form && btnSubmit) {
-        // Phone Mask: (XX) XXXXX-XXXX
-        const phoneInput = document.getElementById('form-phone');
+    let currentStep = 1;
+    const totalSteps = 4;
+    
+    const modalData = {
+        segmento: '',
+        perfil: '',
+        receita: '',
+        nome: '',
+        email: '',
+        telefone: ''
+    };
+
+    if (modalOverlay) {
+        // Open Modal
+        openBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close Modal
+        const closeModal = () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        // Phone Mask
+        const phoneInput = document.getElementById('modal-phone');
         if (phoneInput) {
             phoneInput.addEventListener('input', (e) => {
                 let value = e.target.value.replace(/\D/g, '');
@@ -245,37 +290,142 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (value.length > 0) {
                     value = value.replace(/^(\d{1,2})/, '($1');
                 }
-
                 e.target.value = value;
             });
         }
+
+        const updateModalUI = () => {
+            // Update Steps
+            steps.forEach((step, idx) => {
+                if (idx + 1 === currentStep) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+
+            // Update Progress Bar
+            progressBar.style.width = `${(currentStep / totalSteps) * 100}%`;
+            stepMetaText.textContent = `Passo ${currentStep} de ${totalSteps}`;
+
+            // Update Dots
+            stepDots.forEach((dot, idx) => {
+                const stepNum = idx + 1;
+                dot.classList.remove('active', 'completed');
+                if (stepNum < currentStep) {
+                    dot.classList.add('completed');
+                } else if (stepNum === currentStep) {
+                    dot.classList.add('active');
+                }
+            });
+
+            stepConnectors.forEach((conn, idx) => {
+                if (idx + 1 < currentStep) {
+                    conn.classList.add('completed');
+                } else {
+                    conn.classList.remove('completed');
+                }
+            });
+
+            // Update Buttons
+            if (currentStep === 1) {
+                btnPrev.style.opacity = '0';
+                btnPrev.style.pointerEvents = 'none';
+            } else {
+                btnPrev.style.opacity = '1';
+                btnPrev.style.pointerEvents = 'all';
+            }
+
+            if (currentStep === totalSteps) {
+                btnNext.style.display = 'none';
+                btnSubmit.style.display = 'flex';
+            } else {
+                btnNext.style.display = 'flex';
+                btnSubmit.style.display = 'none';
+            }
+            
+            errorMsg.style.display = 'none';
+        };
 
         const validateEmail = (email) => {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         };
 
-        const validateForm = () => {
-            const inputs = form.querySelectorAll('input[required], select[required]');
-            let isValid = true;
-
-            inputs.forEach((input) => {
-                input.classList.remove('input-error');
-
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.classList.add('input-error');
+        const validateStep = () => {
+            if (currentStep === 1) {
+                const selected = document.querySelector('input[name="segmento"]:checked');
+                if (!selected) {
+                    errorText.textContent = "Selecione o segmento da sua empresa.";
+                    errorMsg.style.display = 'block';
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                    return false;
                 }
-
-                // Email validation
-                if (input.type === 'email' && input.value.trim() && !validateEmail(input.value.trim())) {
-                    isValid = false;
-                    input.classList.add('input-error');
+                modalData.segmento = selected.value;
+            } 
+            else if (currentStep === 2) {
+                const selected = document.querySelector('input[name="perfil"]:checked');
+                if (!selected) {
+                    errorText.textContent = "Selecione o seu perfil na empresa.";
+                    errorMsg.style.display = 'block';
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                    return false;
                 }
-            });
+                modalData.perfil = selected.value;
+            }
+            else if (currentStep === 3) {
+                const selected = document.querySelector('input[name="receita"]:checked');
+                if (!selected) {
+                    errorText.textContent = "Selecione a faixa de receita média.";
+                    errorMsg.style.display = 'block';
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                    return false;
+                }
+                modalData.receita = selected.value;
+            }
+            else if (currentStep === 4) {
+                const nameEl = document.getElementById('modal-name');
+                const emailEl = document.getElementById('modal-email');
+                const phoneEl = document.getElementById('modal-phone');
+                
+                let isValid = true;
+                
+                [nameEl, emailEl, phoneEl].forEach(el => el.classList.remove('input-error'));
+                phoneEl.parentElement.classList.remove('input-error');
 
-            return isValid;
+                if (!nameEl.value.trim()) { isValid = false; nameEl.classList.add('input-error'); }
+                if (!emailEl.value.trim() || !validateEmail(emailEl.value.trim())) { isValid = false; emailEl.classList.add('input-error'); }
+                if (phoneEl.value.replace(/\D/g, '').length < 10) { isValid = false; phoneEl.parentElement.classList.add('input-error'); }
+
+                if (!isValid) {
+                    errorText.textContent = "Por favor, preencha corretamente os campos obrigatórios.";
+                    errorMsg.style.display = 'block';
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                    return false;
+                }
+                
+                modalData.nome = nameEl.value.trim();
+                modalData.email = emailEl.value.trim();
+                modalData.telefone = phoneEl.value.trim();
+            }
+            return true;
         };
+
+        btnNext.addEventListener('click', () => {
+            if (validateStep()) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateModalUI();
+                }
+            }
+        });
+
+        btnPrev.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateModalUI();
+            }
+        });
 
         const sendToGoogleSheets = async (formData) => {
             if (!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL === 'COLE_SUA_URL_AQUI') return false;
@@ -292,90 +442,102 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const errorMsg = document.getElementById('form-error-message');
-
-            if (!validateForm()) {
-                if (errorMsg) {
-                    errorMsg.style.display = 'block';
-                    if (typeof lucide !== 'undefined') lucide.createIcons();
-                }
-                return;
-            }
-            
-            if (errorMsg) {
-                errorMsg.style.display = 'none';
-            }
+        btnSubmit.addEventListener('click', async () => {
+            if (!validateStep()) return;
 
             const originalText = btnSubmit.innerHTML;
             btnSubmit.innerHTML = 'Processando...';
             btnSubmit.disabled = true;
+            btnPrev.style.pointerEvents = 'none';
+            btnPrev.style.opacity = '0.5';
 
-            const name = document.getElementById('form-name')?.value || '';
-            const email = document.getElementById('form-email')?.value || '';
-            const phone = document.getElementById('form-phone')?.value || '';
-            const company = document.getElementById('form-company')?.value || '';
-            const segment = document.getElementById('form-segment')?.value || '';
-            const revenue = document.getElementById('form-revenue')?.value || '';
-
-            // Data object for Google Sheets
             const formData = {
                 timestamp: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
-                nome: name,
-                email: email,
-                telefone: phone,
-                empresa: company,
+                nome: modalData.nome,
+                email: modalData.email,
+                telefone: modalData.telefone,
+                empresa: 'N/A', 
                 cnpj: '',
-                segmento: segment,
-                faturamento: revenue,
-                investimento: '',
+                segmento: modalData.segmento,
+                faturamento: modalData.receita,
+                investimento: modalData.perfil, 
             };
 
-            // 1) Send to Google Sheets (non-blocking)
+            // 1) Send to Google Sheets
             sendToGoogleSheets(formData);
 
-            // ⚡ Dispara o evento de Lead (Cadastro) no Pixel da Meta
+            // Meta Pixel
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead', {
-                    content_name: 'Formulário Vittus',
-                    content_category: segment || 'Geral'
+                    content_name: 'Diagnóstico Vittus (Modal)',
+                    content_category: modalData.segmento || 'Geral'
                 });
             }
 
             // 2) Build WhatsApp message
-            const message = `🏛️ *NOVA QUALIFICAÇÃO — ASSESSORIA VITTUS*\n\n` +
-                `👤 *Nome:* ${name}\n` +
-                `📧 *E-mail:* ${email}\n` +
-                `📱 *Telefone:* ${phone}\n` +
-                `🏢 *Empresa:* ${company}\n` +
-                `📊 *Segmento:* ${segment}\n` +
-                `💰 *Faturamento:* ${revenue}`;
+            const message = `🏛️ *NOVA QUALIFICAÇÃO — DIAGNÓSTICO VITTUS*\n\n` +
+                `👤 *Nome:* ${modalData.nome}\n` +
+                `📧 *E-mail:* ${modalData.email}\n` +
+                `📱 *Telefone:* ${modalData.telefone}\n` +
+                `💼 *Perfil:* ${modalData.perfil}\n` +
+                `📊 *Segmento:* ${modalData.segmento}\n` +
+                `💰 *Faturamento:* ${modalData.receita}`;
 
             const whatsappNumber = '5562994525599';
             const encodedMessage = encodeURIComponent(message);
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
             setTimeout(() => {
-                const successPopup = document.getElementById('form-success-popup');
+                const successPopup = document.getElementById('modal-success-popup');
                 if (successPopup) {
                     successPopup.style.display = 'flex';
-                    if (typeof lucide !== 'undefined') {
-                        lucide.createIcons();
-                    }
-                    // Esconder o popup depois de 4 segundos
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
                     setTimeout(() => {
                         successPopup.style.display = 'none';
-                    }, 4000);
+                        closeModal();
+                    }, 3000);
+                } else {
+                    closeModal();
                 }
 
                 window.open(whatsappURL, '_blank');
                 
                 btnSubmit.innerHTML = originalText;
                 btnSubmit.disabled = false;
+                btnPrev.style.pointerEvents = 'all';
+                btnPrev.style.opacity = '1';
+                
+                // Reset form optionally
+                currentStep = 1;
+                updateModalUI();
+                
+                // Uncheck all radios
+                document.querySelectorAll('.radio-option input[type="radio"]').forEach(radio => radio.checked = false);
+                document.querySelectorAll('.radio-option').forEach(opt => opt.classList.remove('selected'));
+                document.getElementById('modal-name').value = '';
+                document.getElementById('modal-email').value = '';
+                document.getElementById('modal-phone').value = '';
             }, 1000);
         });
+        
+        // Setup options grid selection behavior
+        document.querySelectorAll('.radio-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                // If it's already selected, do nothing
+                const radio = this.querySelector('input[type="radio"]');
+                if(!radio) return;
+                
+                radio.checked = true;
+                const name = radio.getAttribute('name');
+                document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                    r.closest('.radio-option').classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+        });
+
+        // Initial setup
+        updateModalUI();
     }
 
     // ----------------------------------------------------------

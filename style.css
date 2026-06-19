@@ -121,7 +121,7 @@ a {
     background: #fff;
     border-radius: 50%;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 99999;
     mix-blend-mode: difference;
     transform: translate(-50%, -50%);
     will-change: transform;
@@ -136,7 +136,7 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 9998;
+    z-index: 99998;
     mix-blend-mode: difference;
     transform: translate(-50%, -50%);
     transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -1528,4 +1528,432 @@ select.select-simple {
     bottom: 0; left: 0; width: 100%; height: 20%;
     background: linear-gradient(to top, #000000 0%, transparent 100%);
     z-index: 2;
+}
+
+/* ============================================================ */
+/* NEW HERO CTA BLOCK */
+/* ============================================================ */
+.hero-cta-card {
+    background: rgba(15, 15, 15, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.hero-cta-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 168, 255, 0.3);
+}
+.hero-cta-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 168, 255, 0.1);
+    border-radius: 50%;
+    margin: 0 auto 24px;
+}
+.hero-cta-icon i {
+    color: #00a8ff !important;
+}
+.hero-cta-title {
+    font-size: 26px;
+    font-family: var(--font-heading, 'Inter', sans-serif);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    color: #fff;
+    letter-spacing: -0.02em;
+}
+.hero-cta-desc {
+    font-size: 15px;
+    color: #aaa;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+.hero-cta-features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #888;
+}
+.cta-feature {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ============================================================ */
+/* DIAGNOSTIC MODAL */
+/* ============================================================ */
+.diagnostic-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+.diagnostic-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+.diagnostic-modal-container {
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow: hidden;
+}
+.diagnostic-modal-overlay.active .diagnostic-modal-container {
+    transform: translateY(0) scale(1);
+}
+.diagnostic-modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s;
+}
+.diagnostic-modal-close:hover {
+    color: #fff;
+}
+.diagnostic-modal-close i {
+    width: 24px; height: 24px;
+}
+.modal-header {
+    padding: 30px 40px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.modal-progress-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.modal-progress-fill {
+    height: 100%;
+    width: 25%;
+    background: #00a8ff;
+    transition: width 0.4s ease;
+}
+.modal-steps-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+.step-dot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 12px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.step-dot i {
+    width: 16px; height: 16px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    padding: 2px;
+    transition: all 0.3s;
+}
+.step-dot.active {
+    color: #fff;
+}
+.step-dot.active i {
+    background: #00a8ff;
+    color: #fff;
+}
+.step-dot.completed {
+    color: #00a8ff;
+}
+.step-dot.completed i {
+    background: rgba(0, 168, 255, 0.2);
+    color: #00a8ff;
+}
+.step-connector {
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 0 10px;
+    transition: background 0.3s;
+}
+.step-connector.completed {
+    background: #00a8ff;
+}
+.modal-step-meta {
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+}
+.time-est {
+    color: #666;
+}
+.modal-body {
+    padding: 30px 40px;
+    overflow-y: auto;
+    flex: 1;
+}
+.modal-step {
+    display: none;
+    animation: fadeInStep 0.4s ease;
+}
+.modal-step.active {
+    display: block;
+}
+@keyframes fadeInStep {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.step-subtitle {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #00a8ff;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.step-title {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 8px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+.step-desc {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.options-grid.vertical-options {
+    grid-template-columns: 1fr;
+}
+.radio-option {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgba(255,255,255,0.02);
+}
+.radio-option:hover {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.05);
+}
+.radio-option input[type="radio"] {
+    display: none;
+}
+.radio-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+.radio-circle::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #00a8ff;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.radio-option input[type="radio"]:checked + .radio-circle {
+    border-color: #00a8ff;
+}
+.radio-option input[type="radio"]:checked + .radio-circle::after {
+    transform: scale(1);
+}
+/* This requires CSS :has() which is widely supported now */
+.radio-option:has(input[type="radio"]:checked) {
+    border-color: #00a8ff;
+    background: rgba(0, 168, 255, 0.05);
+}
+/* Fallback for browsers without :has() */
+.radio-option.selected {
+    border-color: #00a8ff;
+    background: rgba(0, 168, 255, 0.05);
+}
+.radio-label {
+    font-size: 15px;
+    color: #eee;
+    font-weight: 500;
+}
+.contact-info-box {
+    background: rgba(255,255,255,0.05);
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+.contact-info-box strong {
+    color: #fff;
+}
+.modal-form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.modal-form-group label {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+.modal-form-group label .required {
+    color: #ff4d4d;
+}
+.modal-form-group input {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+.modal-form-group input:focus {
+    outline: none;
+    border-color: #00a8ff;
+    background: rgba(255,255,255,0.05);
+}
+.modal-form-group input.input-error {
+    border-color: #ff4d4d !important;
+}
+.phone-input-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+.phone-input-wrapper.input-error {
+    border-color: #ff4d4d !important;
+}
+.phone-input-wrapper:focus-within {
+    border-color: #00a8ff;
+    background: rgba(255,255,255,0.05);
+}
+.phone-prefix {
+    padding: 0 16px;
+    color: #aaa;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+.phone-prefix i {
+    width: 14px; height: 14px;
+}
+.phone-input-wrapper input {
+    border: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+.phone-input-wrapper input:focus {
+    background: transparent !important;
+}
+.modal-footer {
+    padding: 20px 40px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+.btn-outline:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.4);
+}
+.btn-modal-next {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.modal-security-badge {
+    text-align: center;
+    font-size: 11px;
+    color: #666;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .modal-header, .modal-body, .modal-footer {
+        padding: 20px;
+    }
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+    .step-dot-label {
+        display: none;
+    }
+    .diagnostic-modal-container {
+        height: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+    }
 }
