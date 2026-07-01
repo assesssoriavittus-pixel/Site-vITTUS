@@ -1110,6 +1110,123 @@ input {
 .audience-grid .audience-card:nth-child(2) { transition-delay: 0.15s; }
 .audience-grid .audience-card:nth-child(3) { transition-delay: 0.3s; }
 
+/* ── Section Logos (Marquee) ─────────────────────────── */
+.section--logos {
+  background: var(--bg-tertiary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.marquee-section-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 1.5rem 0;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.marquee-fade-left,
+.marquee-fade-right {
+  position: absolute;
+  top: 0;
+  width: 220px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee-fade-left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary), transparent);
+}
+
+.marquee-fade-right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary), transparent);
+}
+
+.marquee-container {
+  display: flex;
+  width: max-content;
+  gap: 4.5rem;
+  animation: marqueeAnimation 30s linear infinite;
+  align-items: center;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.marquee-img {
+  height: 120px;
+  width: auto;
+  max-height: 120px;
+  max-width: 200px;
+  object-fit: contain;
+  transition: opacity var(--transition);
+  opacity: 0.75;
+  mix-blend-mode: screen;
+}
+
+.marquee-item:hover .marquee-img {
+  opacity: 1;
+}
+
+@keyframes marqueeAnimation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Responsive styles for marquee */
+@media (max-width: 768px) {
+  .section--logos {
+    padding: 60px 0;
+  }
+  
+  .marquee-container {
+    gap: 2.5rem;
+    animation-duration: 22s;
+  }
+  
+  .marquee-img {
+    height: 80px;
+    max-height: 80px;
+    max-width: 130px;
+  }
+  
+  .marquee-img[style*="height: 170px"] {
+    height: 90px !important;
+    max-height: 90px !important;
+  }
+  
+  img[src*="logo-gm"] {
+    height: 50px !important;
+    max-height: 50px !important;
+  }
+  
+  img[src*="logo-teodoro"] {
+    height: 60px !important;
+    max-height: 60px !important;
+  }
+  
+  .marquee-fade-left,
+  .marquee-fade-right {
+    width: 80px;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════
    RESPONSIVE — TABLET
    ═══════════════════════════════════════════════════════ */
